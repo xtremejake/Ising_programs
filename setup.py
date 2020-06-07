@@ -17,6 +17,7 @@ setuptools.setup(
         "pandas==1.0.4",
         "matplotlib",
         "sympy==1.6",
+        "pingouin",
     ],  # specifies dependencies of python packages in pip
     # long_description=long_description,
     # long_description_content_type="text/markdown",
