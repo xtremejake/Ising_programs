@@ -19,15 +19,14 @@ for publication.  A preprint can be obtained from Doug Barrick (barrick@jhu.edu)
 [License](LICENSE.txt)
 
 ## Setup
-
 ```
-#git clone and install the package (pypi submission to come at a later date)
-git clone https://github.com/barricklab-at-jhu/Ising_programs.git```
-
-
-# pip intall the package
-pip install .
+# git clone and install the package (pypi submission to come at a later date)
+git clone https://github.com/barricklab-at-jhu/Ising_programs.git
 ```
+1. Environment replication (requires conda or miniconda):
+   * 
+2. Install from source (```setup.py```):
+   * ```pip install .```
 ## Quikstart
 1. To run the code via the notebooks:
    * ```cd <homopolymer_fit OR heteropolymer_fit>```
