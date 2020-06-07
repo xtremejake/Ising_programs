@@ -38,7 +38,7 @@ class BasePreprocessor:
         ]
         return normylist
 
-    def organize_constructs_by_name(self, melts):
+    def organize_melts_by_name(self, melts):
         """
         This loop puts melts in order of type (NRxC, NRx, RxC) and length.  This is useful for the
         plotting script below, putting the by_melt legends in a sensible order
@@ -62,7 +62,7 @@ class BasePreprocessor:
         melts = NRClist + NRlist + RClist
         return melts
 
-    def save_constructs(self, constructs):
+    def save_construct_names(self, constructs):
         """
         Saves the construct file as a .json to be loaded for input into the partition function generator
         Accepts: str[] - construct names
@@ -74,7 +74,7 @@ class BasePreprocessor:
         )
         self._save_json(constructs_filename, constructs)
 
-    def save_melts(self, melts):
+    def save_melt_names(self, melts):
         """
         Saves the melts
         Accepts: np.array[]- a list of numpy arrays
