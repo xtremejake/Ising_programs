@@ -15,6 +15,7 @@ setuptools.setup(
         "lmfit==1.0.1",
         "numpy==1.18.5",
         "pandas==1.0.4",
+        "matplotlib",
         "sympy==1.6",
     ],  # specifies dependencies of python packages in pip
     # long_description=long_description,

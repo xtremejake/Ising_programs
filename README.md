@@ -22,17 +22,16 @@ for publication.  A preprint can be obtained from Doug Barrick (barrick@jhu.edu)
 ```
 git clone https://github.com/barricklab-at-jhu/Ising_programs.git
 ```
-1. Environment replication (requires conda or miniconda):
+1. Replicate the environment (requires conda or miniconda):
    * ```conda env create -f environment.yml```
    
 2. Install from source (```setup.py```):
    * ```pip install .```
 
 ## Quikstart
-1. To run the code via the self-contained notebooks:
-   * ```cd <homopolymer_fit OR heteropolymer_fit>```
+1. To run the code via the self-contained notebooks (after setup above):
    * ```jupyter notebook```
-   * click on ```Ising_fitter_heteropolymer.ipynb``` OR ```Ising_fitter_homopolymer.ipynb```
+   * navigate to```ising/homopolymer_fit/Ising_fitter_heteropolymer.ipynb``` OR ```ising/heteropolymer_fit/Ising_fitter_homopolymer.ipynb```
 
 2. To run via the the ```.py``` files:
 ## Examples
