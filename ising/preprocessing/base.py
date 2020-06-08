@@ -19,9 +19,14 @@ class BasePreprocessor:
         self.project_name = project_name
         self.glob_path = os.path.join(input_dir, self.glob_suffix)
 
+        # create output directory if it does not already exist
+        if not os.path.exists(self.output_dir):
+            os.mkdir(self.output_dir)
+
     def glob_filepaths(self):
         """Returns the list of filepaths matching the glob_suffix"""
         files = glob.glob(self.glob_path)
+        print(files)
         return files
 
     def normalize_y_values(self, xy):
@@ -38,7 +43,7 @@ class BasePreprocessor:
         ]
         return normylist
 
-    def organize_melts_by_name(self, melts):
+    def organize_homopolymer_melts_by_name(self, melts):
         """
         This loop puts melts in order of type (NRxC, NRx, RxC) and length.  This is useful for the
         plotting script below, putting the by_melt legends in a sensible order
@@ -69,8 +74,8 @@ class BasePreprocessor:
         Returns: None - saves a .json of construct names to the output directory
         """
         # Write out the results.
-        constructs_filename = (
-            f"{self.output_dir}{self.project_name}_constructs.json"
+        constructs_filename = os.path.join(
+            self.output_dir, f"{self.project_name}_constructs.json"
         )
         self._save_json(constructs_filename, constructs)
 
@@ -81,7 +86,9 @@ class BasePreprocessor:
         Returns: None - saves a .json of construct names to the output directory
         """
         # Write out the results.
-        melts_filename = f"{self.output_dir}{self.project_name}_melts.json"
+        melts_filename = os.path.join(
+            self.output_dir, f"{self.project_name}_melts.json"
+        )
         self._save_json(melts_filename, melts)
 
     def _save_json(self, filepath, obj):

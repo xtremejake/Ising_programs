@@ -29,7 +29,7 @@ class AvivCDPreprocessor(BasePreprocessor):
         """Preprocesses the CD data by extracting the X,Y values, and preparing a pandas dataframe object
 
         Accepts: None - preprocesses the data according to the structure defined in __init__
-        Returns: None - saves the output files needed for 1) generating partition functions and 2) fitting the data
+        Returns: den_nsig_const_melt_df, organized_melt_names, constructs and saves the output files needed for 1) generating partition functions and 2) fitting the data
         """
         start = time.time()
         print(
@@ -48,6 +48,7 @@ class AvivCDPreprocessor(BasePreprocessor):
             num += 1
             base = os.path.basename(filename)
             melt_name = base.split(".")[0]
+            print(melt_name)
 
             # Store the names of each construct to map to partition functions
             construct_name = melt_name[:-2]
@@ -63,12 +64,12 @@ class AvivCDPreprocessor(BasePreprocessor):
             # Format melt data for fitting in ising script - build a numpy array to output for Ising fitter.
             melt_array = np.array(
                 [
-                    [xyarray[i, 0], normylist[i], construct_name, num,]
+                    [xyarray[i, 0], normylist[i], construct_name, num]
                     for i in range(len(xyarray))
                 ]
             )
 
-            # Columns are denaturant, normalized CD, construct, melt number.
+            # Prepare dataframe - columns are denaturant, normalized CD, construct, melt number.
             melt_df = pd.DataFrame(
                 melt_array,
                 columns=["denat", "signal", "construct_melt", "dataset"],
@@ -87,12 +88,15 @@ class AvivCDPreprocessor(BasePreprocessor):
         )
 
         # organize the filenames for plotting, etc.
-        organized_melt_names = self.organize_melts_by_name(melt_filenames)
+        organized_melt_names = self.organize_homopolymer_melts_by_name(
+            melt_filenames
+        )
 
         # save melt arrays to be loaded prior to fitting
-        np.save(
-            f"{self.output_dir}{melt_name}", melt_array
-        )  # Writes an npy file to disk
+        for melt_name in organized_melt_names:
+            np.save(
+                os.path.join(self.output_dir, melt_name), melt_array
+            )  # Writes an npy file to disk
 
         # save construct names
         self.save_construct_names(constructs)

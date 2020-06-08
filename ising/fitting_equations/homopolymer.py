@@ -10,13 +10,13 @@ class HomopolymerPartitionFunctionGenerator:
     """
 
     def __init__(
-        self, output_dir=None, project_name=None, construct_names_path=None
+        self, output_dir=None, project_name=None, construct_names=None
     ):
 
         # open the filenames with the constructs
-        with open(f"{construct_names_path}", "r") as file:
-            self.constructs = json.load(file)
-
+        # with open(f"{construct_names_path}", "r") as file:
+        #    self.constructs = json.load(file)
+        self.constructs = construct_names
         self.output_dir = output_dir
         self.project_name = project_name
 
@@ -159,4 +159,6 @@ class HomopolymerPartitionFunctionGenerator:
 
         stop = time.time()
         runtime = stop - start
-        print("\nThe elapsed time was " + str(runtime) + " sec")
+        print("\nThe elapsed time was " + str(runtime) + " seconds")
+
+        return frac_folded_dict
