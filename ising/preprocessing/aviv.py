@@ -48,7 +48,6 @@ class AvivCDPreprocessor(BasePreprocessor):
             num += 1
             base = os.path.basename(filename)
             melt_name = base.split(".")[0]
-            print(melt_name)
 
             # Store the names of each construct to map to partition functions
             construct_name = melt_name[:-2]
