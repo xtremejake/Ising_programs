@@ -9,6 +9,15 @@ setuptools.setup(
     author_email="barrick@jhu.edu, xtremejake.usa@gmail.com",
     license="Apache-2.0",
     include_package_metadata=True,
+    include_package_data=True,
+    package_dir={"ising": "ising"},
+    package_data={
+        "ising": [
+            "data/T4V_data/*.csv",
+            "data/NRC_data/*.dat",
+            "data/NRC_data/*.csv",
+        ]
+    },
     install_requires=[
         "black==19.10b0",
         "jupyter==1.0.0",

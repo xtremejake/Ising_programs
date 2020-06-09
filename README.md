@@ -12,7 +12,7 @@ Finally, there is a folder for calculation of partial correlation coefficients f
 
 All folders contain data files on which the scripts can be run.  All programs were written to run in python 3.8.
 
-A detailed description of this suite of programs and its applications will soon be submitted to the journal Protein Sciene
+A detailed description of this suite of programs and its applications will soon be submitted to the journal Protein Science
 for publication.  A preprint can be obtained from Doug Barrick (barrick@jhu.edu).
 
 ## License
@@ -22,20 +22,17 @@ for publication.  A preprint can be obtained from Doug Barrick (barrick@jhu.edu)
 ```
 git clone https://github.com/barricklab-at-jhu/Ising_programs.git
 ```
-1. Replicate the environment (requires conda or miniconda):
-   * ```conda env create -f environment.yml```
-   
-2. Install from source (```setup.py```):
-   * ```pip install .```
+1. Create and activate a new environment (requires conda or miniconda):
+    ```bash
+    conda env create -n "ising_py3" python=3.8
+    conda activate ising_py3
+    ```
+2. Install from ```setup.py```:
+   ```bash
+   pip install .
+   ```
 
 ## Quikstart
 1. To run the code via the self-contained notebooks (after setup above):
    * ```jupyter notebook```
-   * navigate to```ising/homopolymer_fit/Ising_fitter_heteropolymer.ipynb``` OR ```ising/heteropolymer_fit/Ising_fitter_homopolymer.ipynb```
-
-2. To run via the the ```.py``` files:
-## Examples
-* Check [Examples](docs/getting_started/examples.md) to view examples of systems modeled using Ising.py
-
-## Q&A
-[FAQ](FAQ.md)
+   * navigate to```examples/homopolymer_fit/Ising_fitter_heteropolymer.ipynb``` OR ```examples/heteropolymer_fit/Ising_fitter_homopolymer.ipynb```

@@ -26,7 +26,6 @@ class BasePreprocessor:
     def glob_filepaths(self):
         """Returns the list of filepaths matching the glob_suffix"""
         files = glob.glob(self.glob_path)
-        print(files)
         return files
 
     def normalize_y_values(self, xy):
