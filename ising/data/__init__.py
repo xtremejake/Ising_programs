@@ -1,4 +1,6 @@
 import pkg_resources
+import glob
+import os
 
 NRC_DATA_PATH = pkg_resources.resource_filename("ising", "data/NRC_data")
 PREPROCESSED_NRC_DATA_PATH = pkg_resources.resource_filename(
@@ -7,3 +9,5 @@ PREPROCESSED_NRC_DATA_PATH = pkg_resources.resource_filename(
 T4V_DATA_PATH = pkg_resources.resource_filename(
     "ising", "data/T4V_data/T4Vdata_not_normalized.csv"
 )
+
+homopolymer_data = glob.glob(os.path.join(NRC_DATA_PATH, "*.dat"))
