@@ -12,7 +12,7 @@ T4V_DATA_PATH = pkg_resources.resource_filename(
 )
 
 # data files for preprocessor
-homopolymer_data = glob.glob(os.path.join(NRC_DATA_PATH, "*.dat"))
+homopolymer_data_files = glob.glob(os.path.join(NRC_DATA_PATH, "*.dat"))
 
 # dataframes
 df_columns = [
@@ -21,5 +21,5 @@ df_columns = [
     "repeat sequence",
     "dataset number",
 ]
-heteropolymer_df = pd.read_csv(T4V_DATA_PATH, names=df_columns)
-homopolymer_df = pd.read_csv(PREPROCESSED_NRC_DATA_PATH, names=df_columns)
+heteropolymer_data = pd.read_csv(T4V_DATA_PATH, names=df_columns)
+homopolymer_data = pd.read_csv(PREPROCESSED_NRC_DATA_PATH, names=df_columns)

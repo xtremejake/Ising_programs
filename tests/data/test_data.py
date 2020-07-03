@@ -1,6 +1,6 @@
 import pytest
 import pandas as pd
-from ising.data import homopolymer_data, heteropolymer_df, homopolymer_df
+from ising.data import homopolymer_data_files
 import os
 
 
@@ -41,16 +41,18 @@ def test_homopolymer_nrc_data_import():
         "R_R_R_C_1.dat",
     }
     imported_nrc_filenames = set(
-        [os.path.basename(item) for item in homopolymer_data]
+        [os.path.basename(item) for item in homopolymer_data_files]
     )
     # TODO: test for correct number of datapoints
     assert imported_nrc_filenames == expected_nrc_filenames
 
 
-def test_heteropolymer_t4v_data_import(expected_dataframe_columns_fixture):
+def test_heteropolymer_t4v_data_import(
+    expected_dataframe_columns_fixture, heteropolymer_dataframe_fixture
+):
     """Tests the correct heteropolymer data are imported"""
     expected_heteropolymer_df_shape = (558, 4)
-
+    heteropolymer_df = heteropolymer_dataframe_fixture
     assert (
         isinstance(heteropolymer_df, pd.DataFrame)
         and heteropolymer_df.shape == expected_heteropolymer_df_shape
@@ -58,11 +60,16 @@ def test_heteropolymer_t4v_data_import(expected_dataframe_columns_fixture):
     )
 
 
-def test_homopolymer_dataframe_import(expected_dataframe_columns_fixture):
+def test_homopolymer_dataframe_import(
+    expected_dataframe_columns_fixture, homopolymer_dataframe_fixture
+):
     """Tests the correct homopolymer dataframe is imported"""
     expected_homopolymer_df_shape = (499, 4)
+    homopolymer_df = homopolymer_dataframe_fixture
     assert (
-        isinstance(homopolymer_df, pd.DataFrame)
-        and homopolymer_df.shape == expected_homopolymer_df_shape
-        and set(homopolymer_df.columns) == expected_dataframe_columns_fixture
+        isinstance(homopolymer_dataframe_fixture, pd.DataFrame)
+        and homopolymer_dataframe_fixture.shape
+        == expected_homopolymer_df_shape
+        and set(homopolymer_dataframe_fixture.columns)
+        == expected_dataframe_columns_fixture
     )
