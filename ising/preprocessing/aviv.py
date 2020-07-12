@@ -81,7 +81,9 @@ class AvivCDPreprocessor(BasePreprocessor):
         # combine the dataframes into one and save as a .csv
         den_nsig_const_melt_df = pd.concat(all_dataframes)
         den_nsig_const_melt_df.to_csv(
-            f"{self.output_dir}{self.project_name}_combined_data.csv",
+            os.path.join(
+                self.output_dir, f"{self.project_name}_combined_data.csv"
+            ),
             index=False,
             header=False,
         )
